@@ -1,4 +1,4 @@
-[![CI Linux](https://github.com/dmitriysd9202/lab04/actions/workflows/linux.yml/badge.svg)](https://github.com/dmitriysd9202/lab04/actions/workflows/linux.yml)
+[![CI Linux](https://github.com/Login650139/lab04/actions/workflows/linux.yml/badge.svg)](https://github.com/Login650139/lab04/actions/workflows/linux.yml)
 # Laboratory Work №4
 
 ## Тема
@@ -26,7 +26,7 @@
 Для продолжения работы мне потребовалась актуальная копия проекта из лабораторной работы №3. Я клонировал репозиторий `lab03` локально и привязал его к новому origin:
 
 ```bash
-export GITHUB_USERNAME=dmitriysd9202
+export GITHUB_USERNAME=Login650139
 git clone https://github.com/${GITHUB_USERNAME}/lab03 projects/lab04
 cd projects/lab04
 git remote remove origin
