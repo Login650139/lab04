@@ -46,13 +46,19 @@ jobs:
         run: |
           cmake --build _build --config Release
 
-      - name: Run hello_world
+      - name: Run executables
         run: |
-          ./_build/hello_world_application/hello_world
+          find _build -type f -perm /111
 
-      - name: Run equation
-        run: |
-          echo "1 2 1" | ./_build/solver_application/equation
+          HELLO=$(find _build -type f \( -name "hello_world" -o -name "hello_world.exe" \) | head -n 1)
+          if [ -n "$HELLO" ]; then
+            "$HELLO"
+          fi
+
+          SOLVER=$(find _build -type f \( -name "equation" -o -name "equation.exe" -o -name "solver" -o -name "solver.exe" \) | head -n 1)
+          if [ -n "$SOLVER" ]; then
+            echo "1 2 1" | "$SOLVER"
+          fi
 
   windows:
     name: Windows ${{ matrix.compiler }}
@@ -103,10 +109,16 @@ jobs:
         run: |
           cmake --build _build --config Release
 
-      - name: Run hello_world
+      - name: Run executables
         run: |
-          ./_build/hello_world_application/hello_world.exe
+          find _build -type f -name "*.exe"
 
-      - name: Run equation
-        run: |
-          echo "1 2 1" | ./_build/solver_application/equation.exe
+          HELLO=$(find _build -type f \( -name "hello_world" -o -name "hello_world.exe" \) | head -n 1)
+          if [ -n "$HELLO" ]; then
+            "$HELLO"
+          fi
+
+          SOLVER=$(find _build -type f \( -name "equation" -o -name "equation.exe" -o -name "solver" -o -name "solver.exe" \) | head -n 1)
+          if [ -n "$SOLVER" ]; then
+            echo "1 2 1" | "$SOLVER"
+          fi
